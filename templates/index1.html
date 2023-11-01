@@ -1,84 +1,4 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-    <title>Food Supply Chain Tracking</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <div class="icon">
-                <img src="static\atms_img.jpg" alt="Icon" width="125" height="100">
-            </div>
-            <h1>Advanced Transportation and Management System</h1>
-            
-        </div>
 
-    </header>
-    <h1> Order Tracking</h1>
-    <div class="container my-4">
-        <form method="POST" action="/send_email">
-            <div class="steps">
-                <div class="step">
-                    <div class="step-text">1. Order Confirmed</div>
-                    <input type="checkbox" name="status" value="Order Confirmed">
-                </div>
-                <br><br>
-                <div class="step">
-                    <div class="step-text">2. Shipped</div>
-                    <input type="checkbox" name="status" value="Shipped">
-                </div>
-                <br><br>
-                <div class="step">
-                    <div class="step-text">3. Out for Delivery</div>
-                    <input type="checkbox" name="status" value="Out for Delivery">
-                </div>
-                <br><br>
-                <div class="step">
-                    <div class="step-text">4. Delivered</div>
-                    <input type="checkbox" name="status" value="Delivered">
-                </div>
-            </div>
-        </form>
-        <div class="order-details">
-            <h2>Order Details</h2>
-            <p>Order ID: 123456</p>
-            <p>Delivery Address: 123 Main St, City</p>
-            <p>Estimated Delivery Date: October 30, 2023</p>
-        </div>
-    </div>
-
-    <script>
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function () {
-                if (this.checked) {
-                    const status = this.value;
-                    sendStatusToServer(status);
-                }
-            });
-        });
-
-        function sendStatusToServer(status) {
-            // Send an HTTP request to your server with the selected status
-            fetch("/send_email", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ status: status })
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert(data); // Display the server's response (for testing purposes)
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-        }
-    </script>
-</body>
-</html>-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -165,7 +85,7 @@
             padding: 20px;
         }
 
-        /* Add this to your existing styles */
+        
 
         .analytics-container {
             flex: 1;
@@ -194,9 +114,7 @@
             text-align: center;
         }
 
-        /* Add this to your existing styles */
-
-        /* Add this to your existing styles */
+        
 
         .tracking-steps {
             display: flex;
@@ -209,7 +127,7 @@
             text-align: center;
             position: relative;
             margin: 10px 0;
-            /* Adjust the vertical margin as needed */
+            
         }
 
         .step-icon {
@@ -227,22 +145,22 @@
             font-size: 24px;
             color: #3498db;
             margin: 10px 0;
-            /* Adjust the vertical margin as needed */
+            
         }
 
-        /* Additional styling for better visibility */
+        
         .tracking-step p {
             margin: 0;
             font-size: 14px;
         }
 
-        /* Add space on both sides of each step */
+        
         .tracking-step {
             padding: 0 20px;
-            /* Adjust the horizontal padding as needed */
+            
         }
 
-        /* Add this to your existing styles */
+        
 
         .dual-analytics-container {
             display: flex;
@@ -252,9 +170,9 @@
 
         .dual-analytics-container canvas {
             width: 350%;
-            /* Adjust the width as needed */
+            
             height: 350px;
-            /* Adjust the height as needed */
+            
         }
     </style>
     <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
@@ -291,9 +209,9 @@
 
 
 
-        <!-- After the "Applications" section -->
+        
         <section class="analytics-container">
-            <!-- Inside the "Analytics" container -->
+            
             <h1> Order Tracking</h1>
             <div class="container my-4">
                 <form method="POST" action="/send_email">
@@ -340,7 +258,7 @@
         });
 
         function sendStatusToServer(status) {
-            // Send an HTTP request to your server with the selected status
+            
             fetch("/send_email", {
                 method: "POST",
                 headers: {
@@ -350,7 +268,7 @@
             })
                 .then(response => response.text())
                 .then(data => {
-                    alert(data); // Display the server's response (for testing purposes)
+                    alert(data); 
                 })
                 .catch(error => {
                     console.error("Error:", error);
