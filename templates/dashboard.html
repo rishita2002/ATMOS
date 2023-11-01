@@ -81,7 +81,7 @@
             flex: 1;
             padding: 20px;
         }
-        /* Add this to your existing styles */
+        
 
 .analytics-container {
     flex: 1;
@@ -109,9 +109,7 @@
 .inventory-container h2 {
     text-align: center;
 }
-/* Add this to your existing styles */
 
-/* Add this to your existing styles */
 
 .tracking-steps {
     display: flex;
@@ -123,7 +121,7 @@
 .tracking-step {
     text-align: center;
     position: relative;
-    margin: 10px 0; /* Adjust the vertical margin as needed */
+    margin: 10px 0; 
 }
 
 .step-icon {
@@ -140,20 +138,20 @@
 .arrow {
     font-size: 24px;
     color: #3498db;
-    margin: 10px 0; /* Adjust the vertical margin as needed */
+    margin: 10px 0; 
 }
 
-/* Additional styling for better visibility */
+
 .tracking-step p {
     margin: 0;
     font-size: 14px;
 }
 
-/* Add space on both sides of each step */
+
 .tracking-step {
-    padding: 0 20px; /* Adjust the horizontal padding as needed */
+    padding: 0 20px; 
 }
-/* Add this to your existing styles */
+
 
 .dual-analytics-container {
     display: flex;
@@ -162,8 +160,8 @@
 }
 
 .dual-analytics-container canvas {
-    width: 350%; /* Adjust the width as needed */
-    height: 350px; /* Adjust the height as needed */
+    width: 350%; 
+    height: 350px;
 }
 
 
@@ -204,9 +202,9 @@
             <br>
             <p style="text-align: center;">Revolutionizing the Agri-Food Supply Chain Management</p>
         
-<!-- After the "Applications" section -->
+
 <section class="analytics-container">
-<!-- Inside the "Analytics" container -->
+
 <div class="dual-analytics-container">
     <div class="small-chart-container">
         <h3>Revenue</h3>
@@ -220,7 +218,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Example data for analytics
+    
     var analyticsData1 = {
         labels: ["January", "February", "March", "April", "May"],
         datasets: [{
@@ -243,11 +241,11 @@
         }],
     };
 
-    // Get the context of the canvas elements
+    
     var analyticsCtx1 = document.getElementById('analyticsChart1').getContext('2d');
     var analyticsCtx2 = document.getElementById('analyticsChart2').getContext('2d');
 
-    // Create line charts
+    
     new Chart(analyticsCtx1, {
         type: 'line',
         data: analyticsData1,
@@ -261,13 +259,11 @@
 
 </section>
 
-<!-- Add two smaller containers side by side for tracking and inventory -->
+
 <div class="side-by-side-container">
     <section class="tracking-container">
         <h2>Real-Time Tracking</h2>
-        <!-- Inside the "Real-Time Tracking" container -->
-<!-- Inside the "Real-Time Tracking" container -->
-<!-- Inside the "Real-Time Tracking" container -->
+        
 <div class="tracking-steps">
     <div class="tracking-step">
         <div class="step-icon">1</div>
@@ -298,11 +294,11 @@
 
     <section class="inventory-container">
         <h2>Inventory Management</h2>
-        <!-- Inside the "Inventory Management" container -->
+        
 <canvas id="inventoryChart" width="400" height="200"></canvas>
 
 <script>
-    // Example data for inventory
+    
     var inventoryData = {
         labels: ["Rice", "Wheat", "Fruits", "Maze", "Corn"],
         datasets: [{
@@ -311,17 +307,17 @@
         }],
     };
 
-    // Get the context of the canvas element
+   
     var inventoryCtx = document.getElementById('inventoryChart').getContext('2d');
 
-    // Create a doughnut chart
+    
     var inventoryChart = new Chart(inventoryCtx, {
         type: 'doughnut',
         data: inventoryData,
     });
 </script>
 
-        <!-- Add content for inventory here -->
+        
     </section>
 </div>
 <br>
