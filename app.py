@@ -525,6 +525,85 @@ def read_csv_file(file_path):
     #print(data)
     return data
 
+#Product Availibility
+# Sample data (you can load this from a CSV file)
+data = [
+    {"Warehouse_id": 51, "Warehouse_City": "Raipur", "Product": "Rice", "Quantity_Available": "5000kg", "Price_per_kg": 50},
+    {"Warehouse_id": 52, "Warehouse_City": "Durg", "Product": "Wheat", "Quantity_Available": "2000Kg", "Price_per_kg": 25},
+    {"Warehouse_id": 53, "Warehouse_City": "Bhilai", "Product": "Apple", "Quantity_Available": "1000kg", "Price_per_kg": 70},
+    {"Warehouse_id": 1, "Warehouse_City": "Raipur", "Product": "Rice", "Quantity_Available": "5000kg", "Price_per_kg": 50},
+    {"Warehouse_id": 2, "Warehouse_City": "Bilaspur", "Product": "Wheat", "Quantity_Available": "2000Kg", "Price_per_kg": 25},
+    {"Warehouse_id": 3, "Warehouse_City": "Durg", "Product": "Apple", "Quantity_Available": "1000kg", "Price_per_kg": 70},
+    {"Warehouse_id": 4, "Warehouse_City": "Korba", "Product": "Rice", "Quantity_Available": "7500kg", "Price_per_kg": 55},
+    {"Warehouse_id": 5, "Warehouse_City": "Jagdalpur", "Product": "Wheat", "Quantity_Available": "2800Kg", "Price_per_kg": 26},
+    {"Warehouse_id": 6, "Warehouse_City": "Raigarh", "Product": "Apple", "Quantity_Available": "1100kg", "Price_per_kg": 68},
+    {"Warehouse_id": 7, "Warehouse_City": "Ambikapur", "Product": "Rice", "Quantity_Available": "4900kg", "Price_per_kg": 52},
+    {"Warehouse_id": 8, "Warehouse_City": "Mahasamund", "Product": "Wheat", "Quantity_Available": "2200Kg", "Price_per_kg": 24},
+    {"Warehouse_id": 9, "Warehouse_City": "Bemetara", "Product": "Apple", "Quantity_Available": "980kg", "Price_per_kg": 72},
+    {"Warehouse_id": 10, "Warehouse_City": "Dhamtari", "Product": "Rice", "Quantity_Available": "4800kg", "Price_per_kg": 51},
+    {"Warehouse_id": 11, "Warehouse_City": "Janjgir-Champa", "Product": "Wheat", "Quantity_Available": "2100Kg", "Price_per_kg": 23},
+    {"Warehouse_id": 12, "Warehouse_City": "Kanker", "Product": "Apple", "Quantity_Available": "950kg", "Price_per_kg": 75},
+    {"Warehouse_id": 13, "Warehouse_City": "Kabirdham", "Product": "Rice", "Quantity_Available": "4700kg", "Price_per_kg": 54},
+    {"Warehouse_id": 14, "Warehouse_City": "Kondagaon", "Product": "Wheat", "Quantity_Available": "2400Kg", "Price_per_kg": 22},
+    {"Warehouse_id": 15, "Warehouse_City": "Surajpur", "Product": "Apple", "Quantity_Available": "930kg", "Price_per_kg": 73},
+    {"Warehouse_id": 16, "Warehouse_City": "Balod", "Product": "Rice", "Quantity_Available": "4600kg", "Price_per_kg": 53},
+    {"Warehouse_id": 17, "Warehouse_City": "Baloda Bazar", "Product": "Wheat", "Quantity_Available": "2600Kg", "Price_per_kg": 21},
+    {"Warehouse_id": 18, "Warehouse_City": "Mungeli", "Product": "Apple", "Quantity_Available": "910kg", "Price_per_kg": 74},
+    {"Warehouse_id": 19, "Warehouse_City": "Sukma", "Product": "Rice", "Quantity_Available": "4500kg", "Price_per_kg": 56},
+    {"Warehouse_id": 20, "Warehouse_City": "Narayanpur", "Product": "Wheat", "Quantity_Available": "2700Kg", "Price_per_kg": 27},
+    {"Warehouse_id": 21, "Warehouse_City": "Balrampur", "Product": "Apple", "Quantity_Available": "890kg", "Price_per_kg": 76},
+    {"Warehouse_id": 22, "Warehouse_City": "Mahasamund", "Product": "Rice", "Quantity_Available": "4400kg", "Price_per_kg": 57},
+    {"Warehouse_id": 23, "Warehouse_City": "Korba", "Product": "Wheat", "Quantity_Available": "2800Kg", "Price_per_kg": 28},
+    {"Warehouse_id": 24, "Warehouse_City": "Kanker", "Product": "Apple", "Quantity_Available": "870kg", "Price_per_kg": 77},
+    {"Warehouse_id": 25, "Warehouse_City": "Ambikapur", "Product": "Rice", "Quantity_Available": "4300kg", "Price_per_kg": 58},
+    {"Warehouse_id": 26, "Warehouse_City": "Raigarh", "Product": "Wheat", "Quantity_Available": "2900Kg", "Price_per_kg": 29},
+    {"Warehouse_id": 27, "Warehouse_City": "Bemetara", "Product": "Apple", "Quantity_Available": "850kg", "Price_per_kg": 78},
+    {"Warehouse_id": 28, "Warehouse_City": "Dhamtari", "Product": "Rice", "Quantity_Available": "4200kg", "Price_per_kg": 59},
+    {"Warehouse_id": 29, "Warehouse_City": "Baloda Bazar", "Product": "Wheat", "Quantity_Available": "3000Kg", "Price_per_kg": 30},
+    {"Warehouse_id": 30, "Warehouse_City": "Surajpur", "Product": "Apple", "Quantity_Available": "830kg", "Price_per_kg": 79},
+    {"Warehouse_id": 31, "Warehouse_City": "Kabirdham", "Product": "Rice", "Quantity_Available": "5100kg", "Price_per_kg": 52},
+    {"Warehouse_id": 32, "Warehouse_City": "Kondagaon", "Product": "Wheat", "Quantity_Available": "2200Kg", "Price_per_kg": 24},
+    {"Warehouse_id": 33, "Warehouse_City": "Balrampur", "Product": "Apple", "Quantity_Available": "960kg", "Price_per_kg": 65},
+    {"Warehouse_id": 34, "Warehouse_City": "Sukma", "Product": "Rice", "Quantity_Available": "4300kg", "Price_per_kg": 55},
+    {"Warehouse_id": 35, "Warehouse_City": "Narayanpur", "Product": "Wheat", "Quantity_Available": "2600Kg", "Price_per_kg": 27},
+    {"Warehouse_id": 36, "Warehouse_City": "Balrampur", "Product": "Apple", "Quantity_Available": "900kg", "Price_per_kg": 75},
+    {"Warehouse_id": 37, "Warehouse_City": "Mahasamund", "Product": "Rice", "Quantity_Available": "4800kg", "Price_per_kg": 58},
+    {"Warehouse_id": 38, "Warehouse_City": "Korba", "Product": "Wheat", "Quantity_Available": "2400Kg", "Price_per_kg": 20},
+    {"Warehouse_id": 39, "Warehouse_City": "Balrampur", "Product": "Apple", "Quantity_Available": "980kg", "Price_per_kg": 70},
+    {"Warehouse_id": 40, "Warehouse_City": "Bemetara", "Product": "Rice", "Quantity_Available": "4500kg", "Price_per_kg": 53},
+    {"Warehouse_id": 41, "Warehouse_City": "Raigarh", "Product": "Wheat", "Quantity_Available": "2800Kg", "Price_per_kg": 26},
+    {"Warehouse_id": 42, "Warehouse_City": "Kanker", "Product": "Apple", "Quantity_Available": "1100kg", "Price_per_kg": 69},
+    {"Warehouse_id": 43, "Warehouse_City": "Raigarh", "Product": "Rice", "Quantity_Available": "4900kg", "Price_per_kg": 54},
+    {"Warehouse_id": 44, "Warehouse_City": "Jagdalpur", "Product": "Wheat", "Quantity_Available": "2000Kg", "Price_per_kg": 25},
+    {"Warehouse_id": 45, "Warehouse_City": "Dhamtari", "Product": "Apple", "Quantity_Available": "1000kg", "Price_per_kg": 73},
+    {"Warehouse_id": 46, "Warehouse_City": "Ambikapur", "Product": "Rice", "Quantity_Available": "5200kg", "Price_per_kg": 51},
+    {"Warehouse_id": 47, "Warehouse_City": "Baloda Bazar", "Product": "Wheat", "Quantity_Available": "2700Kg", "Price_per_kg": 23},
+    {"Warehouse_id": 48, "Warehouse_City": "Mungeli", "Product": "Apple", "Quantity_Available": "990kg", "Price_per_kg": 71},
+    {"Warehouse_id": 49, "Warehouse_City": "Sukma", "Product": "Rice", "Quantity_Available": "4400kg", "Price_per_kg": 52},
+    {"Warehouse_id": 50, "Warehouse_City": "Balrampur", "Product": "Wheat", "Quantity_Available": "2500Kg", "Price_per_kg": 24},
+]
+
+@app.route('/demand', methods=['GET', 'POST'])
+def demand():
+    location = request.form.get('location')
+    product = request.form.get('product')
+    quantity = request.form.get('quantity')
+
+    filtered_data = []
+
+    if location and product and quantity:
+        for item in data:
+            if item['Warehouse_City'] == location and item['Product'] == product:
+                filtered_data.append({
+                    'Warehouse_id': item['Warehouse_id'],
+                    'Warehouse_City': item['Warehouse_City'],
+                    'Product': item['Product'],
+                    'Quantity_Available': item['Quantity_Available'],
+                    'Price_per_kg': item['Price_per_kg']
+                })
+
+    return render_template('index3.html', data=filtered_data)
+
 if __name__ == '__main__':
     csv_data = read_csv_file('static/record.csv')  
     app.run(debug=True)
