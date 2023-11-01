@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
-# Function to establish a database connection
+
 def get_db():
     if 'db' not in g:
         g.db = sqlite3.connect('atms.db')
@@ -30,16 +30,15 @@ def main_dashboard():
 
 @app.route('/analytics')
 def dashboard():
-    # Fetch data from the database
-    #conn = get_db()
+    
 
-    # Load data from CSV
+    
     data = pd.read_csv('mock_data.csv')
-    #data = pd.read_sql_query('SELECT * FROM atms', conn)
+    
 
     visualizations = []
 
-    # Visualization 1: Bar chart for Total Quantity by Product Type
+    
     plt.figure(figsize=(7, 5))
     data.groupby('Product Type')['Quantity'].sum().plot(kind='bar')
     plt.title('Total Quantity by Product Type')
@@ -48,7 +47,7 @@ def dashboard():
     img1 = plot_to_base64(plt)
     visualizations.append(img1)
 
-    # Visualization 2: Scatter plot for Temperature vs. Humidity
+    
     plt.figure(figsize=(7, 5))
     plt.scatter(data['Temperature'], data['Humidity'], alpha=0.5)
     plt.title('Temperature vs. Humidity')
@@ -57,7 +56,7 @@ def dashboard():
     img2 = plot_to_base64(plt)
     visualizations.append(img2)
 
-    # Visualization 3: Pie chart for Compliance Status
+    
     compliance_counts = data['Compliance Status'].value_counts()
     plt.figure(figsize=(5, 5))
     plt.pie(compliance_counts, labels=compliance_counts.index, autopct='%1.1f%%')
@@ -65,7 +64,7 @@ def dashboard():
     img3 = plot_to_base64(plt)
     visualizations.append(img3)
 
-    # Visualization 4: Line chart for Quantity over Time
+    
     plt.figure(figsize=(7, 5))
     data['Departure Date'] = pd.to_datetime(data['Departure Date'])
     data.set_index('Departure Date', inplace=True)
@@ -76,7 +75,7 @@ def dashboard():
     img4 = plot_to_base64(plt)
     visualizations.append(img4)
 
-    # Visualization 5: Box plot for CO2 Emissions
+    
     plt.figure(figsize=(10, 5))
     data.boxplot(column='CO2 Emissions (in kg)', by='Product Type')
     plt.title('CO2 Emissions by Product Type')
@@ -86,7 +85,7 @@ def dashboard():
     img5 = plot_to_base64(plt)
     visualizations.append(img5)
 
-    # Visualization 6: Histogram for Distance Traveled
+    
     plt.figure(figsize=(7, 5))
     data['Distance Traveled'].hist(bins=20)
     plt.title('Distribution of Distance Traveled')
@@ -95,7 +94,7 @@ def dashboard():
     img6 = plot_to_base64(plt)
     visualizations.append(img6)
 
-    # Visualization 7: Correlation Heatmap
+    
     plt.figure(figsize=(8, 6))
     correlation_matrix = data.corr()
     plt.imshow(correlation_matrix, cmap='coolwarm', interpolation='none')
@@ -106,7 +105,7 @@ def dashboard():
     img7 = plot_to_base64(plt)
     visualizations.append(img7)
 
-    # Visualization 8: Time Series of Revenue
+    
     plt.figure(figsize=(7, 5))
     data['Arrival Date'] = pd.to_datetime(data['Arrival Date'])
     data.set_index('Arrival Date', inplace=True)
@@ -117,7 +116,7 @@ def dashboard():
     img8 = plot_to_base64(plt)
     visualizations.append(img8)
 
-    # Visualization 9: Bar chart for Quantity by Weather Conditions
+   
     plt.figure(figsize=(7, 5))
     data.groupby('Weather Conditions')['Quantity'].sum().plot(kind='bar')
     plt.title('Total Quantity by Weather Conditions')
@@ -126,7 +125,7 @@ def dashboard():
     img9 = plot_to_base64(plt)
     visualizations.append(img9)
 
-    # Visualization 10: Box plot for Transport Cost by Transportation Mode
+    
     plt.figure(figsize=(10, 5))
     data.boxplot(column='Transport Cost (in dollars)', by='Transportation Mode')
     plt.title('Transport Cost by Transportation Mode')
@@ -175,7 +174,7 @@ def upload_data():
         quarter = request.form.get('quarter')
         year = request.form.get('year')
 
-        # Create a new DataFrame with the form data
+        
         new_data = pd.DataFrame({
             'Product Name': [product_name],
             'Product Type': [product_type],
@@ -205,7 +204,7 @@ def upload_data():
             'Year': [year]
         })
 
-        # Append the new data to the existing CSV file
+        
         new_data.to_csv("mock_data.csv", mode='a', header=False, index=False)
         print("Data Uploaded Successfully!")
 
@@ -214,7 +213,7 @@ def upload_data():
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Route Optimization
-# Data for cities in Chhattisgarh with approximate distances
+
 cities_in_chhattisgarh = {
     'Raipur': {'Bhilai': 30, 'Durg': 25, 'Bilaspur': 140, 'Korba': 200, 'Jagdalpur': 300, 'Ambikapur': 350, 'Rajnandgaon': 70, 'Dhamtari': 40, 'Janjgir': 130, 'Mahasamund': 90, 'Balod': 50, 'Bhatapara': 110, 'Mungeli': 140, 'Kanker': 270},
     'Bhilai': {'Durg': 15, 'Bilaspur': 130, 'Korba': 190, 'Jagdalpur': 310, 'Ambikapur': 360, 'Rajnandgaon': 80, 'Dhamtari': 35, 'Janjgir': 120, 'Mahasamund': 95, 'Balod': 55, 'Bhatapara': 115, 'Mungeli': 145, 'Kanker': 275},
@@ -234,9 +233,9 @@ cities_in_chhattisgarh = {
 }
 
 
-# Function to implement Dijkstra's algorithm
+
 def dijkstra(graph, start, end):
-    # Initialization
+    
     unvisited_nodes = set(graph.keys())
     distances = {node: float('infinity') for node in unvisited_nodes}
     distances[start] = 0
@@ -252,7 +251,7 @@ def dijkstra(graph, start, end):
                 distances[neighbor] = potential_distance
                 previous_nodes[neighbor] = current_node
 
-    # Reconstructing the path
+    
     path = []
     current = end
     while previous_nodes[current] is not None:
@@ -265,11 +264,11 @@ def dijkstra(graph, start, end):
 @app.route('/route', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # Get start and end nodes from the form
+        
         start_node = request.form['start_node']
         end_node = request.form['end_node']
 
-        # Calculate the shortest path
+        
         path, distance = dijkstra(cities_in_chhattisgarh, start_node, end_node)
 
         return render_template('index.html', start=start_node, end=end_node, path=path, distance=distance, cities=cities_in_chhattisgarh.keys())
@@ -279,7 +278,7 @@ def index():
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Inventory Management
 
-# Define the route for adding a new item
+
 @app.route("/add-item", methods=["POST"])
 def add_item():
     # Get the product information from the request
@@ -288,37 +287,37 @@ def add_item():
     product_price = float(request.form["product_price"])
     product_expiry_date = request.form["product_expiry_date"]
 
-    # Check if the CSV file doesn't exist or is empty
+    
     csv_file = "static/new_inventory.csv"
     csv_file_exists = os.path.exists(csv_file) and os.path.getsize(csv_file) > 0
 
-    # Create a new CSV file or add column headers if it doesn't already exist
+    
     with open(csv_file, "a", newline="") as f:
         writer = csv.writer(f)
 
-        if not csv_file_exists:  # If the file is new or empty, add column headers
+        if not csv_file_exists:  
             writer.writerow(["product_name", "product_quantity", "product_price", "product_expiry_date"])
 
-        # Write the new item information to the CSV file
+        
         writer.writerow([product_name, product_quantity, product_price, product_expiry_date])
 
-    # Redirect the user back to the main page
+    
     return redirect("/inventory")
 
 @app.route("/remove-item", methods=["POST"])
 def remove_item():
-    # Get the product name and quantity to remove from the form
+    
     product_name_to_remove = request.form.get("product_name")
     quantity_to_remove = int(request.form.get("product_quantity"))
 
-    # Get the list of items from the CSV file
+    
     items = []
 
     csv_file = "static/new_inventory.csv"
     if os.path.exists(csv_file) and os.path.getsize(csv_file) > 0:
         with open(csv_file, "r", newline="") as f:
             reader = csv.reader(f)
-            next(reader)  # Skip the header row
+            next(reader)  
             for row in reader:
                 item = {
                     "product_name": row[0],
@@ -349,24 +348,24 @@ def remove_item():
     return redirect("/inventory")
 
 
-# Add a route to serve the CSV file
+
 @app.route('/static/<path:filename>')
 def download_file(filename):
     return send_from_directory('static', filename)
 
 
-# Define the route for seeing all items
+
 @app.route("/inventory")
 def see_all_items():
-    items = []  # Initialize an empty list
+    items = []  
 
-    # Check if the CSV file doesn't exist or is empty
+    
     csv_file = "static/new_inventory.csv"
     if os.path.exists(csv_file) and os.path.getsize(csv_file) > 0:
-        # Open the CSV file and read the data
+        
         with open(csv_file, "r", newline="") as f:
             reader = csv.reader(f)
-            next(reader)  # Skip the header row
+            next(reader)  
             for row in reader:
                 item = {
                     "product_name": row[0],
@@ -376,7 +375,7 @@ def see_all_items():
                 }
                 items.append(item)
 
-    # Render the template with the list of items
+    
     return render_template("new_inventory.html", items=items)
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -496,12 +495,12 @@ def calculate_pooling(start, end, time):
 @app.route('/pool', methods=['GET', 'POST'])
 def pool():
     if request.method == 'POST':
-        # Get start, end, and time from the form
+        
         start_node = request.form['start_node']
         end_node = request.form['end_node']
         departure_time = request.form['departure_time']
 
-        # Perform pooling calculation
+        
         pooling_result = calculate_pooling(start_node, end_node, departure_time)
 
         return render_template('pool.html', cities=cities_in_chhattisgarh.keys(), result=pooling_result)
@@ -515,18 +514,18 @@ def pool():
 def display_csv():
     return render_template('index2.html', csv_data=csv_data)
 
-# Function to read CSV file
+
 def read_csv_file(file_path):
     data = []
     with open(file_path, 'r') as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
             data.append(row)
-    #print(data)
+    
     return data
 
 #Product Availibility
-# Sample data (you can load this from a CSV file)
+
 data = [
     {"Warehouse_id": 51, "Warehouse_City": "Raipur", "Product": "Rice", "Quantity_Available": "5000kg", "Price_per_kg": 50},
     {"Warehouse_id": 52, "Warehouse_City": "Durg", "Product": "Wheat", "Quantity_Available": "2000Kg", "Price_per_kg": 25},
