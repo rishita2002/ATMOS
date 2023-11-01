@@ -81,7 +81,6 @@
             flex: 1;
             padding: 20px;
         }
-        /* Add this to your existing styles */
 
 .analytics-container {
     flex: 1;
@@ -109,9 +108,6 @@
 .inventory-container h2 {
     text-align: center;
 }
-/* Add this to your existing styles */
-
-/* Add this to your existing styles */
 
 .tracking-steps {
     display: flex;
@@ -123,7 +119,7 @@
 .tracking-step {
     text-align: center;
     position: relative;
-    margin: 10px 0; /* Adjust the vertical margin as needed */
+    margin: 10px 0;
 }
 
 .step-icon {
@@ -140,20 +136,19 @@
 .arrow {
     font-size: 24px;
     color: #3498db;
-    margin: 10px 0; /* Adjust the vertical margin as needed */
+    margin: 10px 0; 
 }
 
-/* Additional styling for better visibility */
 .tracking-step p {
     margin: 0;
     font-size: 14px;
 }
 
-/* Add space on both sides of each step */
+
 .tracking-step {
-    padding: 0 20px; /* Adjust the horizontal padding as needed */
+    padding: 0 20px; 
 }
-/* Add this to your existing styles */
+
 
 .dual-analytics-container {
     display: flex;
@@ -162,8 +157,8 @@
 }
 
 .dual-analytics-container canvas {
-    width: 350%; /* Adjust the width as needed */
-    height: 350px; /* Adjust the height as needed */
+    width: 350%; 
+    height: 350px; 
 }
 
 
@@ -215,7 +210,6 @@
             align-items: center;
         }
 
-        /* Adjust the margin for input elements to make them closer */
         form input {
             margin: 5px 0;
         }
@@ -227,7 +221,7 @@
             padding: 10px;
             border-radius: 10px;
 
-            /* Add a border around the inventory list */
+          
             border: 1px solid #090000;
         }
 
@@ -344,7 +338,6 @@
 
     
         <script>
-            // For the valid "Expiry Date"
             const expiryDateInput = document.getElementById('product_expiry_date');
             const currentDate = new Date().toISOString().split('T')[0];
             expiryDateInput.min = currentDate;
