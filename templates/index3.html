@@ -1,0 +1,301 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Warehouse Data</title>
+</head>
+<body>
+    <h1>Warehouse Data</h1>
+    
+    <form method="post">
+        <label for="location">Location: </label>
+        <input type="text" name="location" id="location" required>
+        <br>
+        <label for="product">Product: </label>
+        <input type="text" name="product" id="product" required>
+        <br>
+        <label for="quantity">Quantity: </label>
+        <input type="text" name="quantity" id="quantity" required>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Warehouse ID</th>
+            <th>Warehouse City</th>
+            <th>Product</th>
+            <th>Quantity Available</th>
+            <th>Price per kg</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.Warehouse_id }}</td>
+            <td>{{ item.Warehouse_City }}</td>
+            <td>{{ item.Product }}</td>
+            <td>{{ item.Quantity_Available }}</td>
+            <td>{{ item.Price_per_kg }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATMOS</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .main-container {
+            display: flex;
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: darkgreen;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 10px 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: white;
+            color: darkgreen;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Add this to your existing styles */
+
+        .analytics-container {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .side-by-side-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .tracking-container,
+        .inventory-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 10px;
+        }
+
+        .tracking-container h2,
+        .inventory-container h2 {
+            text-align: center;
+        }
+
+        /* Add this to your existing styles */
+
+        /* Add this to your existing styles */
+
+        .tracking-steps {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .tracking-step {
+            text-align: center;
+            position: relative;
+            margin: 10px 0;
+            /* Adjust the vertical margin as needed */
+        }
+
+        .step-icon {
+            background-color: #3498db;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .arrow {
+            font-size: 24px;
+            color: #3498db;
+            margin: 10px 0;
+            /* Adjust the vertical margin as needed */
+        }
+
+        /* Additional styling for better visibility */
+        .tracking-step p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Add space on both sides of each step */
+        .tracking-step {
+            padding: 0 20px;
+            /* Adjust the horizontal padding as needed */
+        }
+
+        /* Add this to your existing styles */
+
+        .dual-analytics-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .dual-analytics-container canvas {
+            width: 350%;
+            /* Adjust the width as needed */
+            height: 350px;
+            /* Adjust the height as needed */
+        }
+        .side-by-side-container{
+            margin-left: 310px;
+        }
+    </style>
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="icon">
+                <img src="static\bg.png" alt="Icon" width="125" height="125">
+            </div>
+            <h1>Advanced Transportation Management and Operation System</h1>
+
+        </div>
+
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/demand">Product Availibility</a></li>
+                    <li><a href="/inventory">Inventory Management</a></li>
+                    <li><a href="/route">Optimized Routes</a></li>
+                    <li><a href="/analytics">Analytics & Visualization</a></li>
+                    <li><a href="/track">Real-Time Tracking</a></li>
+                    <li><a href="/pool">Pooling</a></li>
+                    <li><a href="/compliance">Compliance</a></li>
+
+                </ul>
+            </nav>
+        </aside>
+
+
+        <!-- After the "Applications" section -->
+        <section class="analytics-container">
+            <!-- Inside the "Analytics" container -->
+            <h1>Warehouse Data</h1>
+            <br>
+            <form method="post" action="/demand">
+                <label for="location">Location: </label>
+                <input type="text" name="location" id="location" required>
+                <br>
+                <br>
+                <label for="product">Product: </label>
+                <input type="text" name="product" id="product" required>
+                <br>
+                <br>
+                <label for="quantity">Quantity: </label>
+                <input type="text" name="quantity" id="quantity" required>
+                <br>
+                <br>
+                <input type="submit" value="Search">
+            </form>
+
+            <!-- Add two smaller containers side by side for tracking and inventory -->
+            <div class="side-by-side-container">
+                <table border="1">
+                    <tr>
+                        <th>Warehouse ID</th>
+                        <th>Warehouse City</th>
+                        <th>Product</th>
+                        <th>Quantity Available</th>
+                        <th>Price per kg</th>
+                    </tr>
+                    {% for item in data %}
+                    <tr>
+                        <td>{{ item.Warehouse_id }}</td>
+                        <td>{{ item.Warehouse_City }}</td>
+                        <td>{{ item.Product }}</td>
+                        <td>{{ item.Quantity_Available }}</td>
+                        <td>{{ item.Price_per_kg }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+</body>
+
+</html>
