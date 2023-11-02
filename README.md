@@ -3,18 +3,18 @@
 Development of a tailored Advanced Transportation and Management System for agri-food supply chain management.
 
 ## Table of Contents
-- [Introduction](#introduction)
+- [Goals](#Goals)
 - [Components](#Components)
 - [Installation](#installation)
 
-## Introduction
+## Goals
 
-Provide a brief introduction to your project. What is it about, and what problem does it solve? Mention the main goals and objectives.
+![image](https://github.com/rishita2002/ATMOS/assets/78408338/e0fde86a-76ce-4b00-b5c0-9b65c0e975f6)
+
 
 ## Components
 
-![image](https://github.com/rishita2002/ATMOS/assets/78408338/0fba1f0f-d493-41e5-968d-b39f020a5aa0)
-
+![image](https://github.com/rishita2002/ATMOS/assets/78408338/4508af07-56c4-44de-980d-c3deb2b3beeb)
 
 ## Installation
 
@@ -37,5 +37,9 @@ Provide a brief introduction to your project. What is it about, and what problem
 
 4. Grab the link for local sever.
 
-![image](https://github.com/rishita2002/ATMOS/assets/78408338/91aba231-7e8f-4135-9408-671d277ed98f)
+![image](https://github.com/rishita2002/ATMOS/assets/78408338/ab86776d-13c5-4f28-a929-406f8d2fb94e)
+
+5. ATMOS running
+   
+   ![image](https://github.com/rishita2002/ATMOS/assets/78408338/acbdce18-e361-483d-96e3-005b7fbacb7d)
 
