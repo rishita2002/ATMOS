@@ -390,11 +390,11 @@ app.config['MAIL_PASSWORD'] = 'kieg vkax nbtp hfms'
 
 mail = Mail(app)
 
-@app.route('/track')
+@app.route('/track',methods=['POST','GET'])
 def form():
     return render_template('form.html')
 
-@app.route('/status')
+@app.route('/status',methods=['POST','GET'])
 def status():
     return render_template('index1.html')
 
@@ -589,16 +589,26 @@ def demand():
     quantity = request.form.get('quantity')
 
     filtered_data = []
-
     if location and product and quantity:
         for item in data:
-            if item['Warehouse_City'] == location and item['Product'] == product:
+            if item['Product'] == product and item['Quantity_Available']>quantity:
+                try:
+
+                    if cities_in_chhattisgarh[location][item['Warehouse_City']]:
+                        profit = 10
+                        price = item['Price_per_kg'] * int(quantity)
+                        transport = int(100 * cities_in_chhattisgarh[location][item['Warehouse_City']])
+                        final=profit+price+transport
+                        final='₹ '+str(final)
+                except KeyError:
+                    final=None
                 filtered_data.append({
                     'Warehouse_id': item['Warehouse_id'],
                     'Warehouse_City': item['Warehouse_City'],
                     'Product': item['Product'],
                     'Quantity_Available': item['Quantity_Available'],
-                    'Price_per_kg': item['Price_per_kg']
+                    'Price_per_kg': item['Price_per_kg'],
+                    'Cost': final,
                 })
 
     return render_template('index3.html', data=filtered_data)
