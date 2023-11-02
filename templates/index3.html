@@ -305,6 +305,7 @@ form {
                         <th>Product</th>
                         <th>Quantity Available</th>
                         <th>Price per kg</th>
+                        <th>Cost</th>
                     </tr>
                     {% for item in data %}
                     <tr>
@@ -313,6 +314,7 @@ form {
                         <td>{{ item.Product }}</td>
                         <td>{{ item.Quantity_Available }}</td>
                         <td>{{ item.Price_per_kg }}</td>
+                        <td>{{ item.Cost }}</td>               
                     </tr>
                     {% endfor %}
                 </table>
